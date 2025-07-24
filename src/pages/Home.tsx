@@ -35,9 +35,8 @@ import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Textarea } from "@/components/ui/textarea";
-import { Popover, PopoverTrigger } from "@radix-ui/react-popover";
-import { PopoverContent } from "@/components/ui/popover";
-import hello from "/image/hello.gif";
+import { toast } from "sonner";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const fromSchema = z.object({
   name: z.string(),
@@ -113,7 +112,7 @@ const Home = () => {
   return (
     <div className="px-4 sm:px-12 xl:px-[8%] 2xl:px-[10%]">
       <div
-        className="py-14 -mt-15 xl:-mt-10 lg:grid lg:grid-cols-2 lg:items-center xl:h-[90vh]"
+        className="py-14 relative -mt-15 xl:-mt-10 lg:grid lg:grid-cols-2 lg:items-center xl:h-[90vh]"
         id="home"
       >
         <div className="w-full sm:w-[500px] lg:w-[450px] xl:w-[500px] 2xl:w-[600px] mx-auto lg:mx-0">
@@ -130,16 +129,25 @@ const Home = () => {
             my creative journey
           </p>
           <div>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button variant={"outline"} className="cursor-pointer">
-                  Say hello👋
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="p-0">
-                <img src={hello} alt="hello" className="rounded-lg" />
-              </PopoverContent>
-            </Popover>
+            <Button
+              variant={"outline"}
+              className="cursor-pointer"
+              onClick={() => {
+                toast("Hii!👋", {
+                  description: (
+                    <span className="text-black">
+                      I hope your day is good😁
+                    </span>
+                  ),
+                  action: {
+                    label: "Good",
+                    onClick: () => console.log("Good"),
+                  },
+                });
+              }}
+            >
+              Say hello👋
+            </Button>
           </div>
         </div>
       </div>
@@ -192,13 +200,28 @@ const Home = () => {
                   ) : (
                     <Card className="h-[450px] sm:h-[550px] lg:h-[470px] 2xl:h-[550px]">
                       <CardHeader>
-                        <img
-                          src={`https:${
-                            (value.fields.img as TypeImgAsset)?.fields.file.url
-                          }`}
-                          alt="learn"
-                          className="h-[300px] sm:h-[400px] lg:h-[320px] 2xl:h-[400px] rounded-lg  w-full object-cover object-center"
-                        />
+                        <Dialog>
+                          <DialogTrigger>
+                            <img
+                              src={`https:${
+                                (value.fields.img as TypeImgAsset)?.fields.file
+                                  .url
+                              }`}
+                              alt="learn"
+                              className="h-[300px] sm:h-[400px] lg:h-[320px] 2xl:h-[400px] rounded-lg  w-full object-cover object-center"
+                            />
+                          </DialogTrigger>
+                          <DialogContent className="p-0 h-[350px] sm:h-[500px] ">
+                            <img
+                              src={`https:${
+                                (value.fields.img as TypeImgAsset)?.fields.file
+                                  .url
+                              }`}
+                              alt="learn"
+                              className="h-[350px] sm:h-[500px] rounded-lg  w-full object-cover object-center"
+                            />
+                          </DialogContent>
+                        </Dialog>
                       </CardHeader>
                       <CardContent>
                         <CardTitle>
@@ -291,13 +314,28 @@ const Home = () => {
                 >
                   <Card className="h-[450px] sm:h-[550px] lg:h-[470px] 2xl:h-[550px]">
                     <CardHeader className="">
-                      <img
-                        src={`https:${
-                          (value.fields.img as TypeImgAsset)?.fields.file.url
-                        }`}
-                        alt="learn"
-                        className="h-[300px] sm:h-[400px] lg:h-[330px] 2xl:h-[400px] rounded-lg  w-full object-cover object-center"
-                      />
+                      <Dialog>
+                        <DialogTrigger>
+                          <img
+                            src={`https:${
+                              (value.fields.img as TypeImgAsset)?.fields.file
+                                .url
+                            }`}
+                            alt="learn"
+                            className="h-[300px] sm:h-[400px] lg:h-[320px] 2xl:h-[400px] rounded-lg  w-full object-cover object-center"
+                          />
+                        </DialogTrigger>
+                        <DialogContent className="p-0 h-[350px] sm:h-[500px] ">
+                          <img
+                            src={`https:${
+                              (value.fields.img as TypeImgAsset)?.fields.file
+                                .url
+                            }`}
+                            alt="learn"
+                            className="h-[350px] sm:h-[500px] rounded-lg  w-full object-cover object-center"
+                          />
+                        </DialogContent>
+                      </Dialog>
                     </CardHeader>
                     <CardContent>
                       <CardTitle>
