@@ -163,7 +163,7 @@ const Home = () => {
       </div>
       <div className="py-14 xl:py-24">
         <h1
-          className="font-bold text-[42px] scroll-mt-10 lg:scroll-mt-10 xl:scroll-mt-20 leading-11 "
+          className="font-bold text-[42px] scroll-mt-10 lg:scroll-mt-10 xl:scroll-mt-25 leading-11 "
           id="store"
         >
           My projectku <br />
@@ -382,8 +382,13 @@ const Home = () => {
           </div>
         </Carousel>
       </div>
-      <div className="py-14 xl:py-24" id="contact">
-        <h1 className="font-bold text-[42px] leading-11">Get in touch</h1>
+      <div className="py-14 xl:py-24">
+        <h1
+          className="font-bold text-[42px] leading-11 scroll-mt-10 xl:scroll-mt-25"
+          id="contact"
+        >
+          Get in touch
+        </h1>
         <div className="border-1 border-black w-[20%] rounded-full my-2 lg:w-[10%]"></div>
         <h3 className="2xl:text-lg">Call me bruhh</h3>
         <div className="mt-4 sm:grid sm:grid-cols-2 sm:items-center">
